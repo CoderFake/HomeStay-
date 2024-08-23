@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Heaven Villa</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="{% static 'adminapp/assets/img/kaiadmin/favicon.ico' %}" type="image/x-icon"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/404.css' %}">
+</head>
+<body>
+<div class="box">
+    <div class="box__ghost">
+        <div class="symbol"></div>
+        <div class="symbol"></div>
+        <div class="symbol"></div>
+        <div class="symbol"></div>
+        <div class="symbol"></div>
+        <div class="symbol"></div>
+
+        <div class="box__ghost-container">
+            <div class="box__ghost-eyes">
+                <div class="box__eye-left"></div>
+                <div class="box__eye-right"></div>
+            </div>
+            <div class="box__ghost-bottom">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="box__ghost-shadow"></div>
+    </div>
+
+    <div class="box__description">
+        <div class="box__description-container">
+            <div class="box__description-title">Whoops!</div>
+            <div class="box__description-title">404</div>
+            <div class="box__description-text">It seems like we couldn't find the page you were looking for</div>
+        </div>
+
+        <a href="" target="_blank" class="box__button">Go back</a>
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function(){
+        $('.box__button').on('click', function (e){
+            e.preventDefault();
+            if(localStorage.getItem("PRE_URL"))
+                window.location.href = localStorage.getItem("PRE_URL");
+            window.location.href = {% url 'index' %};
+        })
+    })
+</script>
+</body>
+</html>

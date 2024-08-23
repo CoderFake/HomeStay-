@@ -1,0 +1,139 @@
+{% load static %}
+<header id="header" class="site-header header-scrolled position-absolute text-black bg-light">
+    <nav id="header-nav" class="navbar fixed-top navbar-expand-lg anonymous-user">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'webapp/images/image.png' %}" alt="" class="logo" style="max-height: 5rem;">
+            </a>
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2 shadow-none" type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <use xlink:href="#navbar-icon"></use>
+                </svg>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                <div class="offcanvas-header px-4 pb-0">
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                </div>
+                <div class="offcanvas-body text-hover light-border">
+                    <ul id="navbar"
+                        class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 ">
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase active" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#activities">Activities</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#our-rooms">Rooms</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#booking-wrap">Booking</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#contact">Contact</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#cart">
+                                Cart
+                                <span class="item-notification bg-danger rounded-circle">1</span>
+                            </a>
+                        </li>
+                        <li class="nav-item pe-4 d-lg-none">
+                            <a class="nav-link light text-uppercase" href="{% url 'login' %}">Login</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="btn-box">
+                        <a class="btn login-btn btn-arrow btn-pill btn-medium btn-outline-light position-relative" href="{% url 'login' %}">
+                            <span>Login
+                                <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8" xml:space="preserve">
+                                    <g>
+                                      <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34" y2="12.9"></line>
+                                      <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav id="header-nav" class="navbar fixed-top navbar-expand-lg user d-none">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'webapp/images/image.png' %}" alt="" class="logo" style="max-height: 5rem;">
+            </a>
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2 shadow-none" type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <use xlink:href="#navbar-icon"></use>
+                </svg>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                <div class="offcanvas-header px-4 pb-0">
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                </div>
+                <div class="offcanvas-body text-hover light-border">
+                    <ul id="navbar"
+                        class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 ">
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase active" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#activities">Activities</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#our-rooms">Rooms</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#booking-wrap">Booking</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#contact">Contact</a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link light text-uppercase" href="{% url 'index' %}#cart">
+                                Cart
+                                <span class="item-notification bg-danger rounded-circle">1</span>
+                            </a>
+                        </li>
+                         <li class="nav-item nav-item-user pe-4">
+                            <a class="nav-link user-nav-link light text-uppercase" href="{% url 'profile_update' %}">
+                                 <img src="" alt="" class="user-picture rounded-circle" style="max-height: 2rem;">
+                            </a>
+                        </li>
+                        <li class="nav-item nav-item-admin d-none dropdown pe-4">
+                            <a class="nav-link dropdown-toggle user-nav-link light text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="" alt="" class="user-picture rounded-circle" style="max-height: 2rem;">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'profile_update' %}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'admin' %}">Admin</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="btn-box">
+                        <a class="btn logout-btn btn-arrow btn-pill btn-medium btn-outline-light position-relative" href="#">
+                            <span>Logout
+                                <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8" xml:space="preserve">
+                                    <g>
+                                      <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34" y2="12.9"></line>
+                                      <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

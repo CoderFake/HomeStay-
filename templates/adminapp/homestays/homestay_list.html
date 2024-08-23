@@ -1,0 +1,338 @@
+{% extends 'admin_base.html' %}    
+{% load static %}
+
+{% block extra_head %}
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-inner">
+            <div class="page-header d-flex flex-row justify-content-between">
+                <div>
+                    <ul class="breadcrumbs justify-content-start">
+                        <li class="nav-home">
+                            <a href="{% url 'admin' %}">
+                                <i class="icon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="icon-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'homestay_manager' %}">Homestays</a>
+                        </li>
+                        <li class="separator">
+                            <i class="icon-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'homestay_manager' %}">Homestay List</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-auto">
+                    <a href="" class="justify-content-end align-items-center btn btn-primary btn-round" 
+                       data-link-action="editmodal" title="Edit Detail"
+                       data-bs-toggle="modal" data-bs-target="#edit-modal">
+                        Add Homestay
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Homestay List</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="user-table" class="display table table-striped table-hover w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Area</th>
+                                                <th>Address</th>
+                                                <th>Price</th>
+                                                <th>Discount</th>
+                                                <th>Max Capacity</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="ec-vendor-block-img space-bottom-30 p-4">
+                            <h4 style="text-align:center; margin-bottom:20px;"><b>Add Homestay</b></h4>
+                            <div style="height:2px; background-color:#f7f7f7;"></div>
+                            <div class="ec-vendor-upload-detail mt-2">
+                                <form id="homestayForm" class="row g-3" enctype="multipart/form-data">
+                                    <input class="form-control d-none" name="address" id="address" type="text"/>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="homestay-name" class="form-label">Name</label>
+                                        <input class="form-control" name="name" id="homestay-name" type="text" placeholder="Homestay"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="area" class="form-label">Area(m&#178;)</label>
+                                        <input type="number" class="form-control" name="area" id="area" value="300">
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="city" class="form-label">City</label>
+                                         <select class="form-control" id="city" name="city">
+                                         </select>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="district" class="form-label">District</label>
+                                         <select class="form-control" id="district" name="district">
+                                         </select>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="ward" class="form-label">Ward</label>
+                                         <select class="form-control" id="ward" name="ward">
+                                         </select>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="road" class="form-label">Road</label>
+                                        <input class="form-control" name="road" id="road" type="text"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="price" class="form-label">Price(VND)</label>
+                                        <input class="form-control" name="price" id="price" value="1000" type="number"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label class="form-label" for="discount">Discount(%)</label>
+                                        <input type="number" class="form-control" id="discount" value="10" name="discount"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="max-capacity" class="form-label">Max Capacity(people)</label>
+                                        <input class="form-control" name="max_capacity" value="1" id="max-capacity" type="number"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label class="form-label" for="status">Status</label>
+                                        <select class="form-control" id="status" name="status">
+                                             <option value="1" selected>Available</option>
+                                             <option value="0">Unavailable</option>
+                                         </select>
+                                    </div>
+                                     <div class="col-md-12 space-t-15">
+                                        <label for="map-key" class="form-label">Map</label>
+                                        <input name="map_key" class="form-control" id="map-key" placeholder="<iframe src='https://www.google.com/maps/...'></iframe>">
+                                    </div>
+                                    <div class="col-md-12 space-t-15">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea name="description" class="form-control" id="description"></textarea>
+                                    </div>
+                                    <div class="col-md-12 space-t-15">
+                                        <button type="submit" class="btn homestay-submit btn-primary rounded-3">Update
+                                        </button>
+                                        <button class="btn btn-secondary rounded-3  qty_close">Close
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-2" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                     <div class="row">
+                        <div class="ec-vendor-block-img space-bottom-30 p-4">
+                            <h4 style="text-align:center; margin-bottom:20px;"><b>Delete Homestay</b></h4>
+                            <div style="height:2px; background-color:#f7f7f7;"></div>
+                            <h5 class="homestay-title mt-3 d-flex justify-content-center"></h5>
+                            <input type="number" class="modal-homestay-id d-none" value="">
+                        </div>
+                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger rounded-3">Delete</button>
+                    <button type="button" class="btn btn-secondary rounded-3  qty_close" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block jsblock %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if(accessToken){
+                $('#user-table').DataTable({
+                    "ajax": {
+                        "url": "{% url 'homestay_list' %}",
+                        "type": "GET",
+                        "headers":{
+                            "Authorization": "Bearer " + accessToken,
+                        },
+                        "dataSrc": "",
+                         "error": function (jqXHR, textStatus, errorThrown) {
+                            permission(jqXHR.status);
+                         },
+                    },
+                    "columns": [
+                        {
+                            "data": "name",
+                            "render": function(data, type, row) {
+                                return '<span class="homestay-name">'+ data +'</span>';
+                            }
+                        },
+                        {"data": "area"},
+                        {"data": "address"},
+                        {"data": "price"},
+                        {"data": "discount"},
+                        {"data": "max_capaciy"},
+                        {
+                            "data": "status",
+                            "render": function(data, type, row) {
+                                var status = data ? 'bg-success' : 'bg-danger';
+                                return '<span class="rounded-3  border-0 badge '+ status +'">' + (data ? 'Available' : 'Booked') + '</span>';
+                            }
+                        },
+                        {
+                            "data": null,
+                            "render": function (data, type, row){
+                                let editUrlBase = "{% url 'profile_user' %}";
+                                let delete_homestay =`<a class="dropdown-item homestay-delete-button" href="#" >
+                                    Delete Homestay
+                                    <input type="number" value="${data.id}" class="homestay-id d-none">
+                                </a>`
+                                    
+                                return `
+                                    <div class="btn-group user-btn-group mb-1">
+                                        <button type="button" class="btn btn-outline-success btn-1">
+                                            <a href="">Info</a>
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-2 btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false" data-display="static">
+                                            <span class="sr-only">Info</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="${editUrlBase}?user_id=${data.id}">Edit</a>
+                                            ${delete_homestay}
+                                        </div>
+                                    </div>
+                                `;
+                            },
+                        },
+                    ]
+                });
+                
+                $('.homestay-submit').on('click', function (e){
+                    e.preventDefault();
+                    $('#address').val($('#road').val() +", " + $('#ward').val() +", " + $('#district').val() +", " + $('#city').val());
+                    $('#edit-modal').modal('hide');
+                    loadOverlay();
+                    var formData = new FormData($('#homestayForm')[0]);
+                    $.ajax({
+                        url: `{% url 'homestay_create_update_delete' %}`,
+                        type: "POST",
+                        headers:{
+                            "Authorization": "Bearer " + accessToken
+                        },
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        dataType: "json",
+                        success: function (response) {
+                            closeOverlay()
+                            window.location.reload();
+                        },
+                        error: function (error, status, xhr) {
+                            closeOverlay();
+                            permission(xhr.status);
+                        }
+                    })
+                });
+
+                loadLocations('city', '');
+
+                $('#city').on('change', function () {
+                    loadLocations('district', $(this).val());
+                });
+
+                $('#district').on('change', function () {
+                    loadLocations('ward', $(this).val());
+                });
+
+                function loadLocations(type_name, parentId = '') {
+                    $.ajax({
+                        url: '{% url 'locations' %}',
+                        type: 'GET',
+                        data: {type: type_name, parentId: parentId},
+                        dataType: 'json',
+                        success: function (locations) {
+                            var name = "";
+                            if (type_name == 'city') name = "City";
+                            else if (type_name == 'district') name = "District";
+                            else name = "Ward";
+                            $('#' + type_name).empty().append(new Option(`Select ${name}`, ""));
+                            locations.forEach(function (location) {
+                                $('#' + type_name).append(new Option(location.displayName, location.id));
+                            });
+                        }
+                    });
+                }
+
+                $(document).on('click', '.homestay-delete-button', function (e) {
+                    e.preventDefault();
+                    let homestayId = $(this).find('.homestay-id').val(); 
+                    let homestayName = $(this).closest('tr').find('.homestay-name').text();
+                    $('.modal-homestay-id').val(homestayId);
+                    $('.homestay-title').html(`Are you sure delete &nbsp;<b style="color:red;"> ${homestayName} </b>?`);
+                    $('#delete-modal').modal('show');
+                });
+
+                
+                $('#delete-modal .btn-danger').on('click', function (e){
+                    e.preventDefault();
+                    loadOverlay();
+                    $('#delete-modal').modal('hide');
+                    $.ajax({
+                        url: `{% url 'homestay_create_update_delete'%}?homestay_id=${$('.modal-homestay-id').val()}`,
+                        type: "DELETE",
+                        headers:{
+                            "Authorization": "Bearer " + accessToken
+                        },
+                        success: function (response, status, xhr){
+                            closeOverlay();
+                            window.location.reload();
+                        },
+                        error: function (response, status, xhr){
+                            closeOverlay();
+                            console.log(xhr.status);
+                        }
+                    })
+                })
+
+                $('.qty_close').on('click', function (e) {
+                    e.preventDefault();
+                    $('#edit-modal').modal('hide');
+                    $('#delete-modal').modal('hide');
+                })
+            }
+        });
+    </script>
+{% endblock %}

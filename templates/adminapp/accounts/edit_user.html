@@ -1,0 +1,238 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+    <section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+        <div class="container mt-5 pt-4">
+            <div class="page-inner">
+                <div class="page-header">
+                    <ul class="breadcrumbs mb-3">
+                        <li class="nav-home">
+                            <a href="{% url 'admin' %}">
+                                <i class="icon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="icon-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'user_manager' %}">Users</a>
+                        </li>
+                        <li class="separator">
+                            <i class="icon-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="">Edit User</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="row">
+                    <div class="ec-shop-rightside col-lg-12 col-md-12">
+                        <div class="ec-vendor-dashboard-card ec-vendor-setting-card">
+                            <div class="ec-vendor-card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="ec-vendor-block-profile">
+                                            <div class="ec-vendor-block-img space-bottom-30" style="float:right;">
+                                                <img class="v-img svg_img pro_svg" src="https://homestay-booking-2024.s3.ap-southeast-2.amazonaws.com/user_pictures/user.png"
+                                                     alt="user image">
+                                            </div>
+                                            <h2>Hey, <b><span class="full-name">Name!</span></b></h2>
+                                            <p>From your account you can easily view and track orders. You can manage
+                                                and change your account information like address, contact information
+                                                and history of orders.</p>
+                                            <br>
+                                            <h6>
+                                                <a href="#" data-link-action="editmodal" title="Edit Detail"
+                                                   data-bs-toggle="modal" data-bs-target="#edit_modal">
+                                                    <button class="btn" style="background-color:black; color:white; border-radius:15px;">
+                                                        Update Profile
+                                                        <img src="{% static 'adminapp/assets/img/icons/edit.svg' %}"
+                                                             class="svg_img pro_svg" alt="edit"/>
+                                                    </button>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <h5>Account Information</h5>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="ec-vendor-detail-block ec-vendor-block-address">
+                                                    <h6>Full Name<a href="" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal">
+                                                        <img src="{% static 'adminapp/assets/img/icons/edit.svg' %}" class="svg_img pro_svg" alt="edit" /></a></h6>
+                                                    <ul>
+                                                        <li><strong>Full Name: </strong><span class="full-name"></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="ec-vendor-detail-block ec-vendor-block-email space-bottom-30">
+                                                    <h6>Email Address <a href="" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal">
+                                                        <img src="{% static 'adminapp/assets/img/icons/edit.svg' %}" class="svg_img pro_svg" alt="edit" /></a></h6>
+                                                    <ul>
+                                                        <li><strong>Email Address: </strong><span class="email"></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="ec-vendor-detail-block ec-vendor-block-contact space-bottom-30">
+                                                    <h6>Contact number<a href="" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal">
+                                                        <img src="{% static 'adminapp/assets/img/icons/edit.svg' %}" class="svg_img pro_svg" alt="edit" /></a></h6>
+                                                    <ul>
+                                                        <li><strong>Phone Number: </strong><span class="phone-number"></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="ec-vendor-detail-block ec-vendor-block-address mar-b-30">
+                                                    <h6>Address<a href="" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal">
+                                                        <img src="{% static 'adminapp/assets/img/icons/edit.svg' %}" class="svg_img pro_svg" alt="edit" /></a></h6>
+                                                    <ul>
+                                                        <li><strong>Home Address: </strong><span class="address"></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="ec-vendor-block-img space-bottom-30 p-4">
+                            <h4 style="text-align:center; margin-bottom:20px;"><b>Edit Profile</b></h4>
+                            <div style="height:2px; background-color:#f7f7f7;"></div>
+                            <div class="ec-vendor-upload-detail">
+                                <form id="profileForm" class="row g-3"  enctype="multipart/form-data">
+                                     <div class="col-md-6 space-t-15">
+                                        <label for="user-name" class="form-label">User Name</label>
+                                        <input class="form-control" name="username" id="user-name" type="text"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="role" class="form-label">Role</label>
+                                        <select class="form-control" name="role" id="role">
+                                            <option value="Admin">Admin</option>
+                                            <option value="Staff">Staff</option>
+                                            <option value="Customer">Customer</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="first-name" class="form-label">First Name</label>
+                                        <input class="form-control" name="first_name" id="first-name" type="text"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="last-name" class="form-label">Last Name</label>
+                                        <input class="form-control" name="last_name" id="last-name" type="text"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input  type="email" class="form-control" id="email" />
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="phone-number" class="form-label">Phone Number</label>
+                                         <input class="form-control" name="phone_number" id="phone-number" type="text"/>
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label class="address" for="address">Address</label>
+                                        <input class="form-control" type="text" id="address" name="address">
+                                    </div>
+                                    <div class="col-md-6 space-t-15">
+                                        <label for="profile-picture" class="form-label">Profile Picture</label>
+                                        <div class="custom-file">
+                                            <input type="file" name="picture" class="form-control custom-file-input" id="profile-picture">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 space-t-15">
+                                        <button type="submit" class="btn profile-submit btn-primary rounded-3">Update</button>
+                                        <button class="btn btn-secondary rounded-3  qty_close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block jsblock %}
+    <script>
+        $(document).ready(function (){
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('user_id');
+            $.ajax({
+                url: `{% url 'edit_user' %}?user_id=${userId}`,
+                type: "GET",
+                headers:{
+                    "Authorization": "Bearer " + accessToken
+                },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (response, status, xhr){
+                    $('.ec-vendor-block-profile .full-name').text(response.first_name + response.last_name);
+                    if(response.picture_url)
+                        $('.ec-vendor-block-profile .v-img').attr('src', response.picture_url);
+                    $('.ec-vendor-detail-block .email').text(response.email);
+                    $('.ec-vendor-detail-block .phone-number').text(response.phone_number);
+                    $('.ec-vendor-detail-block .address').text(response.address);
+                    $('#user-name').val(response.username);
+                    $('#role option').prop('selected', false);
+                    $('#role option[value="' + response.role + '"]').prop('selected', true);
+                    $('#first-name').val(response.first_name);
+                    $('#last-name').val(response.last_name);
+                    $('#email').val(response.email);
+                    $('#phone-number').val(response.phone_number);
+                    $('#address').val(response.address);
+                },
+                error: function (error, status, xhr){
+                    permission(xhr.status);
+                }
+            });
+
+            $('.profile-submit').on('click', function (e){
+                e.preventDefault();
+                $('#edit_modal').modal('hide');
+                loadOverlay();
+                var formData = new FormData($('#profileForm')[0]);
+                $.ajax({
+                    url: `{% url 'edit_user' %}?user_id=${userId}`,
+                    type: "PUT",
+                    headers:{
+                        "Authorization": "Bearer " + accessToken
+                    },
+                    data: formData,
+                    processData: false, 
+                    contentType: false,
+                    dataType: "json",
+                    success : function (response){
+                        closeOverlay()
+                        window.location.reload();
+                    },
+                    error: function (error, status, xhr) {
+                        permission(xhr.status);
+                    }
+                })
+            });
+            $('.qty_close').on('click', function(e){
+                e.preventDefault();
+                $('#edit-modal').modal('hide');
+            })
+                
+        })
+    </script>
+{% endblock %}

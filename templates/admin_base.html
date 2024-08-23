@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Heaven Admin</title>
+        <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
+        <link rel="icon" href="{% static 'adminapp/assets/img/kaiadmin/favicon.ico' %}" type="image/x-icon"/>
+    
+        <!-- Fonts and icons -->
+        <script src="{% static 'adminapp/assets/js/plugin/webfont/webfont.min.js'%}"></script>
+        <script>
+            WebFont.load({
+                google: {families: ["Public Sans:300,400,500,600,700"]},
+                custom: {
+                    families: [
+                        "Font Awesome 5 Solid",
+                        "Font Awesome 5 Regular",
+                        "Font Awesome 5 Brands",
+                        "simple-line-icons",
+                    ],
+                    urls: ["{% static 'adminapp/assets/css/fonts.min.css' %}"],
+                },
+                active: function () {
+                    sessionStorage.fonts = true;
+                },
+            });
+        </script>
+    
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="{% static 'adminapp/assets/css/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'adminapp/assets/css/plugins.min.css'%}"/>
+        <link rel="stylesheet" href="{% static 'adminapp/assets/css/kaiadmin.min.css'%}"/>
+        <link rel="stylesheet" href="{% static 'adminapp/assets/css/overlay.css' %}"/>
+    
+        {% block extra_head %}
+            
+        {% endblock %}
+    
+    </head>
+    <body>
+        <div class="wrapper d-none">
+            <!-- Sidebar -->
+            {% include 'includes/admin_sidebar.html' %}
+            <!-- End Sidebar -->
+            
+            <div class="main-panel">
+                {% include 'includes/admin_header.html' %}
+                
+                {% block content %}
+                    
+                {% endblock %}
+            
+                {% include 'includes/admin_footer.html' %}
+                
+            </div>
+        
+        </div>
+        <ul class="notifications"></ul>
+        <div id="LoadOverlay" style="display:none;">
+            <div class="load">
+                <hr/><hr/><hr/><hr/>
+            </div>
+        </div>
+        <!--   Core JS Files   -->
+        <script src="{% static 'adminapp/assets/js/core/jquery-3.7.1.min.js' %}"></script>
+        <script src="{% static 'adminapp/assets/js/core/popper.min.js' %}"></script>
+        <script src="{% static 'adminapp/assets/js/core/bootstrap.min.js'%}"></script>
+        
+        <!-- jQuery Scrollbar -->
+        <script src="{% static 'adminapp/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+        
+        <!-- Chart JS -->
+        <script src="{% static 'adminapp/assets/js/plugin/chart.js/chart.min.js' %}"></script>
+        
+        <!-- jQuery Sparkline -->
+        <script src="{% static 'adminapp/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js' %}"></script>
+        
+        <!-- Chart Circle -->
+        <script src="{% static 'adminapp/assets/js/plugin/chart-circle/circles.min.js' %}"></script>
+        
+        <!-- Datatables -->
+        <script src="{% static 'adminapp/assets/js/plugin/datatables/datatables.min.js' %}"></script>
+        
+        <!-- Bootstrap Notify -->
+        <script src="{% static 'adminapp/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+        
+        <!-- Sweet Alert -->
+        <script src="{% static 'adminapp/assets/js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+        
+        <!-- Kaiadmin JS -->
+        <script src="{% static 'adminapp/assets/js/kaiadmin.min.js' %}"></script>
+        
+        <script src="{% static 'adminapp/assets/js/overlay.js' %}"></script>
+        <script>
+            $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+                type: "line",
+                height: "70",
+                width: "100%",
+                lineWidth: "2",
+                lineColor: "#177dff",
+                fillColor: "rgba(23, 125, 255, 0.14)",
+            });
+
+            $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+                type: "line",
+                height: "70",
+                width: "100%",
+                lineWidth: "2",
+                lineColor: "#f3545d",
+                fillColor: "rgba(243, 84, 93, .14)",
+            });
+
+            $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+                type: "line",
+                height: "70",
+                width: "100%",
+                lineWidth: "2",
+                lineColor: "#ffa534",
+                fillColor: "rgba(255, 165, 52, .14)",
+            });
+        </script>
+        <script>
+            let accessToken = localStorage.getItem("ACCESS_TOKEN");
+            let locationBase = "http://localhost:8000/accounts/login";
+            let userLocation = "http://localhost:8000/admin/profile-user?user_id=";
+            function permission(status){
+                if(status === 401){
+                    localStorage.setItem("PRE_URL", window.location.href);
+                    localStorage.removeItem("ACCESS_TOKEN");
+                    window.location.href = "{% url 'login' %}"; 
+                }
+                else if(status === 403){
+                    window.location.href = "{% url 'index' %}"; 
+                }
+                else if(status === 404){
+                    window.location.href = "{% url 'not_found' %}"; 
+                }
+            }
+            $.ajax({
+                url: "{% url 'permissions' %}",
+                type: 'GET',
+                headers: {
+                    "Authorization": "Bearer " + accessToken,
+                },
+                error: function (response, status, xhr) {
+                    permission(xhr.status);
+                }
+            });
+            
+            $(document).ready(function () {
+                loadOverlay();
+                if (accessToken) {
+                    $.ajax({
+                        url: "{% url 'profile_update' %}",
+                        type: 'GET',
+                        headers: {
+                            "Authorization": "Bearer " + accessToken,
+                        },
+                        success: function (response, status, xhr) {
+                            setInterval(function() {
+                                $('.wrapper').removeClass('d-none');
+                            }, 500);
+                            closeOverlay();
+                            $('.full-name').text(response.first_name + " " + response.last_name);
+                            let role = response.role === "Admin" ? "btn-danger": "btn-primary";
+                            $('.user-role').addClass(role).text(response.role);
+                            $('.email-admin').text(response.email);
+                            $('.btn.btn-xs.btn-secondary.btn-sm').attr("href", userLocation + response.id)
+                            if (response.picture_url) $('.avatar-img').attr('src', response.picture_url);
+                            else $('.avatar-img').attr('src', "https://homestay-booking-2024.s3.ap-southeast-2.amazonaws.com/user_pictures/user.png");
+                        },
+                        error: function (xhr, status, error) {
+                            closeOverlay();
+                            permission(xhr.status);
+                        }
+                    });
+                }
+                else{
+                    localStorage.setItem("PRE_URL", window.location.href);
+                    window.location.href = "{% url 'login' %}"; 
+                }
+                $('.logout').on('click', function (e){
+                    e.preventDefault();
+                    localStorage.removeItem("ACCESS_TOKEN");
+                    localStorage.removeItem("PRE_URL");
+                    window.location.href = "{% url 'login' %}"; 
+                })
+                
+            })
+        </script>
+        
+        {% block jsblock %}
+            
+        {% endblock %}
+    </body>
+</html>

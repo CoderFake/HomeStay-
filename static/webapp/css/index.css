@@ -1,0 +1,414 @@
+
+:root {
+  --accent-color: #333;
+  --black-color: #000;
+  --dark-color: #111;
+  --gray-color-100: #F9F7F5;
+  --gray-color-200: #E1E1E1;
+  --gray-color-300: #D1D1D1;
+  --gray-color-400: #ced4da;
+  --gray-color-500: #adb5bd;
+  --dark-gray-color: #474341;
+  --bs-light-rgb: rgba(255, 255, 255, 1);
+  --body-text-color: #474341;
+  --light-text-color: #fff;
+  --light-color: #fff;
+  --primary-color: #ff8103;
+  --swiper-theme-color: #807E7C !important;
+}
+/* - Intro
+------------------------------------------------------------- */
+#intro .banner-content {
+  top: 30%;
+  left: 300px;
+  z-index: 3;
+  width: 54%;
+}
+
+#intro .banner-content p {
+  width: 85%;
+}
+
+#intro .social-links {
+  top: 50%;
+  right: 40px;
+  bottom: 0;
+}
+
+#intro .social-links a:hover {
+  text-decoration: underline;
+  color: var(--light-color);
+}
+
+#intro .sub-banner-content {
+  top: 16%;
+}
+
+@media only screen and (max-width: 1455px) {
+  #intro .image-holder img {
+    height: 910px;
+    object-fit: cover;
+  }
+
+  #intro .banner-content {
+    top: 20%;
+    left: 100px;
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  #intro .banner-content {
+    left: 40px;
+    width: 88%;
+  }
+
+  #intro h1.banner-title {
+    font-size: 3em;
+  }
+
+  #intro .social-links {
+    top: 850px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+}
+
+@media only screen and (max-width: 1455px) {
+  #intro .sub-banner-content {
+    top: 36%;
+  }
+}
+
+
+/* - About
+------------------------------------------------------------- */
+#about .container {
+  max-width: 930px;
+}
+
+#about p {
+  font-size: 1.2em;
+}
+
+/* - Activities
+------------------------------------------------------------- */
+#activities .image-holder img {
+  width: 100%;
+}
+
+#activities .icon-box svg {
+  fill: var(--dark-color);
+  width: 40px;
+  height: 40px;
+}
+
+#activities .detail {
+  width: 60%;
+}
+
+@media only screen and (max-width: 1280px) {
+  #activities .detail {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  #activities .detail {
+    padding: 120px 0;
+  }
+}
+
+/* - Acheivement
+------------------------------------------------------------- */
+#achievements .counter-number h5>.number-item {
+  font-size: 5.9em;
+}
+
+#achievements .counter-number span.digital-item {
+  font-size: 4.5em;
+}
+
+#achievements .counter-info p {
+  letter-spacing: 0.12em;
+}
+
+/* - Our Rooms
+------------------------------------------------------------- */
+#our-rooms .product-card .detail {
+  width: 100%;
+  height: 358px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  padding: 40px;
+  transition: 0.9s all;
+}
+
+#our-rooms .product-card:hover .detail {
+  bottom: 50px;
+  padding: 80px 40px;
+  opacity: 1;
+  background-color: var(--gray-color-100);
+}
+
+#our-rooms .swiper-wrapper {
+  margin-bottom: 40px;
+}
+
+#our-rooms .swiper-arrow svg {
+  top: 30%;
+  padding: 18px;
+  width: 60px;
+  height: 60px;
+  z-index: 3;
+  background-color: var(--gray-color-100);
+}
+
+#our-rooms svg.icon-arrow-left {
+  left: 60px;
+}
+
+#our-rooms svg.icon-arrow-right {
+  right: 60px;
+}
+
+#our-rooms .swiper-arrow svg:hover {
+  background-color: var(--gray-color-100);
+}
+
+@media only screen and (max-width: 901px) {
+  #our-rooms .swiper-arrow svg {
+    top: 73%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #our-rooms .swiper-arrow svg {
+    top: 68%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #our-rooms .swiper-arrow svg {
+    top: 40%;
+  }
+}
+
+/* - Testimonials
+------------------------------------------------------------- */
+#testimonials blockquote {
+  font-size: 2em;
+  font-family: var(--heading-font);
+}
+
+#testimonials .swiper-pagination {
+  bottom: 80px;
+}
+
+#testimonials .swiper-pagination span.swiper-pagination-bullet {
+  margin-right: 25px !important;
+}
+
+@media only screen and (max-width: 430px) {
+  .pattern-overlay.pattern-left.position-absolute {
+    display: none;
+  }
+}
+
+/* - Booking
+------------------------------------------------------------- */
+.booking-form .booking-item {
+  width: 24%;
+}
+
+.booking-form .datetime-container button span.month-day {
+  font-size: 5.5em;
+  font-family: var(--heading-font);
+  width: 50%;
+}
+
+.booking-form .datetime-container button>span {
+  display: inline;
+  font-size: 0;
+  text-transform: capitalize;
+}
+
+.booking-form .datetime-container span {
+  font-size: 18px;
+}
+
+.datetime-container button span.week-day {
+  display: none;
+}
+
+.booking-form .datetime-container button.date,
+.booking-form .datetime-container button.time {
+  background-color: var(--light-color);
+  border-radius: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.booking-form .datetime-container button.active {
+  background-color: var(--light-color);
+}
+
+.booking-form .picker {
+  width: 500px;
+}
+
+.booking-form .picker table td.active,
+.booking-form .picker table td.time-selected {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.booking-form button:after {
+  content: "";
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" id="arrow-down" viewBox="0 0 24 24"> <path fill="currentColor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222l4.95 4.95Z"/> </svg>');
+  position: absolute;
+  top: 80px;
+  left: 153px;
+  width: 20px;
+  height: 20px;
+  z-index: 9;
+}
+
+.booking-form input.booking {
+  font-size: 5.5em;
+  font-family: var(--heading-font);
+  color: var(--dark-color) !important;
+  border: none;
+  width: 50%;
+  outline: none;
+  position: relative;
+}
+
+.booking-form input.booking::placeholder {
+  color: var(--dark-color);
+}
+
+.booking-form input::-webkit-outer-spin-button,
+.booking-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .booking-form .booking-item {
+    width: 50%;
+  }
+
+  .booking-form button:after {
+    left: 191px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .booking-form .booking-item {
+    width: 100%;
+  }
+
+  .booking-form button:after {
+    left: 265px;
+  }
+
+  .booking-form .datetime-container button span.month-day {
+    width: 30%;
+  }
+}
+
+/* - Video
+------------------------------------------------------------- */
+#video-player a.play-btn {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#myModal .modal-dialog {
+  max-width: 980px;
+}
+
+@media only screen and (max-width: 901px) {
+  #video-player img {
+    height: 480px;
+    object-fit: cover;
+  }
+}
+
+/* - Latest Post
+------------------------------------------------------------- */
+.post-grid .meta-date {
+  line-height: 0;
+}
+
+.post-grid .meta-date span.meta-day {
+  font-size: 3.5em;
+  font-family: var(--heading-font);
+  line-height: 1;
+}
+
+.post-grid .card-detail h3.card-title {
+  line-height: 1.3;
+}
+
+.post-grid .card-detail .blog-paragraph {
+  width: 90%;
+}
+
+/* - Contact
+------------------------------------------------------------- */
+#contact .contact-detail {
+  width: 60%;
+  padding: 70px 0;
+}
+
+.contact-detail textarea,
+.contact-detail input {
+  font-family: var(--heading-font);
+  height: 36px;
+  border-bottom: 1px solid var(--gray-color-200) !important;
+}
+
+.contact-detail textarea:focus,
+.contact-detail input:focus {
+  outline: none;
+}
+
+/* - Newsletter
+------------------------------------------------------------- */
+#newsletter input[type="text"] {
+  width: 100%;
+  height: 75px;
+  border: 1px solid var(--gray-color-200) !important;
+  background: transparent;
+  border-radius: 35px;
+  font-family: var(--heading-font);
+}
+
+#newsletter .btn-subscribe {
+  top: 5px;
+  right: 5px;
+}
+
+@media only screen and (max-width: 530px) {
+  #newsletter .btn-subscribe {
+    top: 83px;
+    width: 100%;
+  }
+
+  #newsletter .btn-subscribe button {
+    width: 100%;
+  }
+}
+
+.full-height {
+    height: 100%;
+    overflow: hidden;
+}

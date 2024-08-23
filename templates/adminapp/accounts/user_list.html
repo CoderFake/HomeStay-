@@ -1,0 +1,155 @@
+{% extends 'admin_base.html' %}    
+{% load static %}
+
+{% block extra_head %}
+    
+{% endblock %}
+
+{% block content %}
+     <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <ul class="breadcrumbs mb-3">
+                        <li class="nav-home">
+                            <a href="{% url 'admin' %}">
+                                <i class="icon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="icon-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'user_manager' %}">Users</a>
+                        </li>
+                        <li class="separator">
+                            <i class="icon-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'user_manager' %}">User List</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">User List</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="user-table" class="display table table-striped table-hover w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Last Login</th>
+                                                <th>Email</th>
+                                                <th>Phone Number</th>
+                                                <th>Address</th>
+                                                <th>Status</th>
+                                                <th>Role</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block jsblock %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if(accessToken){
+                $('#user-table').DataTable({
+                    "ajax": {
+                        "url": "{% url 'user_list' %}",
+                        "type": "GET",
+                        "headers":{
+                            "Authorization": "Bearer " + accessToken,
+                        },
+                        "dataSrc": "",
+                         "error": function (jqXHR, textStatus, errorThrown) {
+                            permission(jqXHR.status);
+                         },
+                    },
+                    "columns": [
+                        {"data": "name"},
+                        {"data": "last_login"},
+                        {"data": "email"},
+                        {"data": "phone_number"},
+                        {"data": "address"},
+                        {
+                            "data": "status",
+                            "render": function(data, type, row) {
+                                if(data === "block")
+                                    return '<span class="rounded-3  border-0 badge bg-warning">Blocked</span>';
+                                else if (data === "active")
+                                    return '<span class="rounded-3  border-0 badge bg-success">Active</span>';
+                                else if (data === "delete")
+                                    return '<span class="rounded-3  border-0 badge bg-danger">Deleted</span>';
+                                else
+                                    return '<span class="rounded-3  border-0 badge bg-danger">InActive</span>';
+                            }
+                        },
+                        {
+                            "data": "role",
+                            "render": function(data, type, row) {
+                                let badgeColor = '';
+                                switch (data) {
+                                    case 'Admin':
+                                        badgeColor = 'badge bg-danger';
+                                        break;
+                                    case 'Staff':
+                                        badgeColor = 'badge bg-primary';
+                                        break;
+                                    case 'Customer':
+                                        badgeColor = 'badge bg-warning';
+                                        break;
+                                    default:
+                                        badgeColor = 'badge bg-warning';
+                                }
+                                return ('<span class="rounded-3 border-0 '+ badgeColor + '"> '+ data +'</span>');
+                            }
+                        },
+                        {
+                            "data": null,
+                            "render": function (data, type, row){
+                                let editUrlBase = "{% url 'profile_user' %}";
+                                let status_user
+                                if(data.is_deleted)
+                                    status_user = '<a class="dropdown-item" href="user_unblock/'+ data.is_deleted +'">Unblock User</a>';
+                                else
+                                    status_user = '<a class="dropdown-item" href="user_block/'+ data.is_deleted +'">Block User</a>';
+                                    
+                                return `
+                                    <div class="btn-group user-btn-group mb-1">
+                                        <button type="button" class="btn btn-outline-success btn-1">
+                                            <a href="">Info</a>
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-2 btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false" data-display="static">
+                                            <span class="sr-only">Info</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="${editUrlBase}?user_id=${data.id}">Edit</a>
+                                            ${status_user}
+                                        </div>
+                                    </div>
+                                `;
+                            },
+                        },
+                    ]
+                });
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,668 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <svg class="bi" width="40"
+                             height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use xlink:href="#close-sharp"></use>
+                        </svg>
+                    </button>
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="intro">
+        <div class="image-holder position-relative">
+            <img src="{% static 'webapp/images/banner-item1.jpg' %}" alt="banner" class="img-fluid">
+        </div>
+        <div class="container-lg">
+            <div class="banner-content position-absolute">
+                <span class="light text-uppercase">Homestay tốt nhất</span>
+                <h1 class="banner-title light display-1 text-capitalize py-3 lh-sm">Hãy Trải Nghiệm Một Tầm Cao Mới Của Nghỉ Dưỡng</h1>
+                <p class="light fs-5 pb-4 d-none d-lg-flex">
+                    Trong vẻ đẹp thanh bình của Việt Nam, Heaven Villa là nơi nghỉ dưỡng lý tưởng cho du khách tìm kiếm sự bình yên giữa lòng thiên nhiên.
+                    Được bao quanh bởi khung cảnh xanh mát và không gian yên tĩnh, villa của chúng tôi là thiên đường nghỉ ngơi, nơi khách hàng có thể thư giãn và tái tạo năng lượng.
+                    Với các phòng rộng rãi có tầm nhìn đẹp tuyệt vời, hồ bơi mát rượi, và sự hiếu khách chân thành, Heaven Villa hứa hẹn mang đến một trải nghiệm khó quên.
+                    Hãy đến, thư giãn, và đắm chìm trong không gian yên bình của Heaven Villa, điểm dừng chân hoàn hảo của bạn ở Việt Nam.
+                </p>
+
+                <a href="#" class="btn btn-arrow btn-pill btn-medium btn-outline-light position-relative">
+                    <span> Homestays
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8" enable-background="new 0 0 36.1 25.8" xml:space="preserve">
+                            <g>
+                                <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34" y2="12.9"></line>
+                                <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" points="22.2,1.1 34,12.9 22.2,24.7   "></polyline>
+                            </g>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+            <div class="social-links position-absolute">
+                <ul class="list-unstyled d-flex d-md-block justify-content-center">
+                    <li class="pb-3 pe-3"><a href="#" class="light">Fb</a></li>
+                    <li class="pb-3 pe-3"><a href="#" class="light">Ig</a></li>
+                    <li class="pb-3 pe-3"><a href="#" class="light">Tw</a></li>
+                    <li class="pb-3 pe-3"><a href="#" class="light">Li</a></li>
+                    <li><a href="#" class="light">Yt</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="padding-xlarge text-center position-relative overflow-hidden">
+        <div class="pattern-overlay pattern-right position-absolute">
+            <img src="{% static 'webapp/images/leaf-pattern1.png'%}" alt="pattern">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="detail mb-4">
+                    <h2 class="display-5 text-capitalize">Chào mừng đến với HEAVEN VILLA</h2>
+                    <p>Chào mừng bạn đến với khu nghỉ dưỡng ấm cúng của chúng tôi, nằm tại Việt Nam! 
+                        Tại Heaven Villa, chúng tôi rất vui mừng được chào đón bạn đến với ngôi nhà thứ hai của mình.
+                        Hãy sẵn sàng để thư giãn và kết nối lại với thiên nhiên khi bạn khám phá vẻ đẹp của Wayanad.
+                        Các phòng nghỉ thoải mái, ẩm thực địa phương ngon lành, và sự hiếu khách thân thiện của chúng tôi ở đây để đảm bảo bạn có một kỳ nghỉ tuyệt vời.
+                        Dù bạn đang tìm kiếm sự thư giãn hay phiêu lưu, chúng tôi ở đây để làm cho trải nghiệm của bạn thực sự đáng nhớ.
+                        Chúng tôi rất mong được đón tiếp bạn và tạo nên những kỷ niệm tuyệt vời cùng nhau!</p>
+                </div>
+            </div>
+
+            <a href="" class="btn btn-arrow btn-pill btn-medium btn-outline-dark bg-light text-black position-relative">
+                <span>Kết nối với chúng tôi
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8" enable-background="new 0 0 36.1 25.8" xml:space="preserve">
+                        <g>
+                            <line fill="none" stroke="#111111" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34" y2="12.9"></line>
+                            <polyline fill="none" stroke="#111111" stroke-width="3" stroke-miterlimit="10" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
+                        </g>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <section id="activities" class="overflow-hidden">
+        <div class="container-fluid p-0">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12 g-0">
+                    <div class="image-holder">
+                        <img src="{% static 'webapp/images/single-image.jpg' %}" alt="hotel" class="img-fluid">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 bg-gray-100 d-flex align-items-center justify-content-center">
+                    <div class="detail">
+
+                        <div class="display-header">
+                            <h2 class="display-5">Chúng Tôi Cung Cấp Những Hoạt Động Gì?</h2>
+                            <p>Ẩn mình trong khung cảnh yên bình của Việt Nam, biệt thự của chúng tôi mang đến một khu nghỉ dưỡng bình yên giữa thiên nhiên xanh tươi và khung cảnh hùng vĩ.</p>
+                        </div>
+
+                        <div class="row mt-5">
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="icon-box d-flex align-items-center pb-5">
+                                    <div class="icon-box-icon">
+                                        <svg class="spa" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <use xlink:href="#spa"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="icon-box-content ps-3">
+                                        <h3 class="card-title text-dark fs-4">Spa</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="icon-box d-flex align-items-center pb-5">
+                                    <div class="icon-box-icon">
+                                        <svg class="fishing" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <use xlink:href="#fishing"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="icon-box-content ps-3">
+                                        <h3 class="card-title text-dark fs-5">Fishing</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="icon-box d-flex align-items-center pb-5">
+                                    <div class="icon-box-icon">
+                                        <svg class="bar" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <use xlink:href="#bar"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="icon-box-content ps-3">
+                                        <h3 class="card-title text-dark fs-5">Bar</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="icon-box d-flex align-items-center pb-5">
+                                    <div class="icon-box-icon">
+                                        <svg class="pool" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <use xlink:href="#pool"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="icon-box-content ps-3">
+                                        <h3 class="card-title text-dark fs-5">Pool</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="icon-box d-flex align-items-center pb-5">
+                                    <div class="icon-box-icon">
+                                        <svg class="dining" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <use xlink:href="#dining"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="icon-box-content ps-3">
+                                        <h3 class="card-title text-dark fs-5">Dining</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="icon-box d-flex align-items-center pb-5">
+                                    <div class="icon-box-icon">
+                                        <svg class="barbeque">
+                                            <use xlink:href="#barbeque" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="icon-box-content ps-3">
+                                        <h3 class="card-title text-dark fs-5">Đồ nướng</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- row -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="booking-wrap" class="padding-large">
+        <div class="container">
+            <div class="row">
+
+                <form action="" class="booking-form d-flex flex-wrap align-items-center justify-content-around">
+                    <div class="booking-content d-flex flex-wrap col-lg-8">
+                        <div class="booking-item">
+                            <label for="date-in" class="text-uppercase d-block">Arrival</label>
+                            <div class="date" id="select-arrival-date"></div>
+                        </div>
+                        <div class="booking-item">
+                            <label for="date-in" class="text-uppercase d-block">Departure</label>
+                            <div class="date" id="select-departure-date"></div>
+                        </div>
+                        <div class="booking-item">
+                            <label class="text-uppercase d-block">Rooms</label>
+                            <input type="number" class="booking" name="rooms" min="01" max="5" placeholder="01"
+                                   value="01">
+                        </div>
+                        <div class="booking-item">
+                            <label class="text-uppercase d-block">Guests</label>
+                            <input type="number" class="booking" name="guests" min="01" max="10" placeholder="01"
+                                   value="01">
+                        </div>
+                    </div>
+                    <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative">
+            <span>Check availability<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 36.1 25.8"
+                                         enable-background="new 0 0 36.1 25.8" xml:space="preserve">
+                <g>
+                  <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34"
+                        y2="12.9"></line>
+                  <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10"
+                            points="22.2,1.1 34,12.9 22.2,24.7   "></polyline>
+                </g>
+              </svg></span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>  
+
+    <section id="our-rooms" class="position-relative padding-large pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="display-header d-flex justify-content-between pb-3">
+                    <h2 class="display-7 text-dark fw-normal">Khám phá homestays của chúng tôi</h2>
+                </div>
+                <div class="swiper-arrow">
+                    <svg class="icon-arrow-left border rounded-circle position-absolute"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <use href="#icon-arrow-left"></use>
+                    </svg>
+
+                </div>
+                <div class="swiper product-swiper ps-md-3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="product-card position-relative overflow-hidden">
+                                <div class="image-holder">
+                                    <img src="{% static 'webapp/images/product-item1.jpg' %}" alt="product-item"
+                                         class="img-fluid overflow-hidden">
+                                </div>
+                                <div class="product-detail mt-3">
+                                    <h3><a href="#">Classic Rooms</a></h3>
+                                    <div class="detail position-absolute">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td class="pe-2"><strong>Price:</strong></td>
+                                                <td class="price"><strong>299RS</strong> /Pernight</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Size:</strong></td>
+                                                <td>10 ft</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Capacity:</strong></td>
+                                                <td>Max persion 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Bed:</strong></td>
+                                                <td>Normal Beds</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Services:</strong></td>
+                                                <td>WiFi, Television, Bathroom,...</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <a href="room-details.html" class="btn btn-small btn-black btn-pill mt-3">More
+                                            Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- product-card -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card position-relative overflow-hidden">
+                                <div class="image-holder">
+                                    <img src="{% static 'webapp/images/product-item2.jpg' %}" alt="product-item"
+                                         class="img-fluid overflow-hidden">
+                                </div>
+                                <div class="product-detail mt-3">
+                                    <h3><a href="#">Grand Deluxe Rooms</a></h3>
+                                    <div class="detail position-absolute">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td class="pe-2"><strong>Price:</strong></td>
+                                                <td class="price"><strong>399RS</strong> /Pernight</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Size:</strong></td>
+                                                <td>10 ft</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Capacity:</strong></td>
+                                                <td>Max persion 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Bed:</strong></td>
+                                                <td>Normal Beds</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Services:</strong></td>
+                                                <td>Wifi, Television, Bathroom,...</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <a href="room-details.html" class="btn btn-small btn-black btn-pill mt-3">More
+                                            Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- product-card -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card position-relative overflow-hidden">
+                                <div class="image-holder">
+                                    <img src="{% static 'webapp/images/product-item3.jpg' %}" alt="product-item"
+                                         class="img-fluid overflow-hidden">
+                                </div>
+                                <div class="product-detail mt-3">
+                                    <h3><a href="#">Ultra Superior Rooms</a></h3>
+                                    <div class="detail position-absolute">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td class="pe-2"><strong>Price:</strong></td>
+                                                <td class="price"><strong>399RS</strong> /Pernight</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Size:</strong></td>
+                                                <td>10 ft</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Capacity:</strong></td>
+                                                <td>Max persion 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Bed:</strong></td>
+                                                <td>Normal Beds</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Services:</strong></td>
+                                                <td>Wifi, Television, Bathroom,...</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <a href="room-details.html" class="btn btn-small btn-black btn-pill mt-3">More
+                                            Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- product-card -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card position-relative overflow-hidden">
+                                <div class="image-holder">
+                                    <img src="{% static 'webapp/images/product-item1.jpg' %}" alt="product-item"
+                                         class="img-fluid overflow-hidden">
+                                </div>
+                                <div class="product-detail mt-3">
+                                    <h3><a href="#">Ultra Superior Rooms</a></h3>
+                                    <div class="detail position-absolute">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td class="pe-2"><strong>Price:</strong></td>
+                                                <td class="price"><strong>399$</strong> /Pernight</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Size:</strong></td>
+                                                <td>10 ft</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Capacity:</strong></td>
+                                                <td>Max persion 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Bed:</strong></td>
+                                                <td>Normal Beds</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pe-2"><strong>Services:</strong></td>
+                                                <td>Wifi, Television, Bathroom,...</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <a href="room-details.html" class="btn btn-small btn-black btn-pill mt-3">More
+                                            Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- product-card -->
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-arrow">
+                    <svg class="icon-arrow-right border rounded-circle position-absolute"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <use href="#icon-arrow-right"></use>
+                    </svg>
+
+                </div>
+                <div class="btn-center mt-5">
+                    <a href="rooms.html"
+                       class="btn btn-arrow btn-pill btn-medium btn-outline-dark bg-light text-black position-relative">
+                        <span>View All Rooms<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8"
+                                                 enable-background="new 0 0 36.1 25.8" xml:space="preserve">
+                            <g>
+                              <line fill="none" stroke="#111111" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34"
+                                    y2="12.9"></line>
+                              <polyline fill="none" stroke="#111111" stroke-width="3" stroke-miterlimit="10"
+                                        points="22.2,1.1 34,12.9 22.2,24.7   "></polyline>
+                            </g>
+                          </svg>
+                        </span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{#    <section id="testimonials" class="position-relative bg-gray-100 padding-xlarge">#}
+{#        <div class="pattern-overlay pattern-left position-absolute">#}
+{#            <img src="{% static 'webapp/images/leaf-pattern2.png' %}" alt="pattern">#}
+{#        </div>#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="review-content position-relative">#}
+{#                    <div class="swiper testimonial-swiper">#}
+{#                        <div class="swiper-wrapper">#}
+{#                            <div class="swiper-slide text-center d-flex justify-content-lg-center">#}
+{#                                <div class="review-item col-lg-8 col-md-12">#}
+{#                                    <blockquote>“BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA”#}
+{#                                    </blockquote>#}
+{#                                    <div class="author-detail">#}
+{#                                        <div class="name text-dark text-uppercase pt-2">-Raju Bhai, Dharavi</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="swiper-slide text-center d-flex justify-content-lg-center">#}
+{#                                <div class="review-item col-lg-8 col-md-12">#}
+{#                                    <blockquote>“BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA”#}
+{#                                    </blockquote>#}
+{#                                    <div class="author-detail">#}
+{#                                        <div class="name text-dark text-uppercase pt-2">-Raju Bhai, Dharavi</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="swiper-slide text-center d-flex justify-content-lg-center">#}
+{#                                <div class="review-item col-md-8">#}
+{#                                    <blockquote>“BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA”#}
+{#                                    </blockquote>#}
+{#                                    <div class="author-detail">#}
+{#                                        <div class="name text-dark text-uppercase pt-2">-Raju Bhai, Dharavi</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="swiper-pagination"></div>#}
+{#    </section>#}
+
+
+
+    <section id="video-player" class="position-relative overflow-hidden">
+        <div class="image-holder">
+            <img src="{% static 'webapp/images/video-item.jpg' %}" alt="video" class="img-fluid">
+        </div>
+        <a type="button" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/74Nlo8Gq2t0"
+           data-bs-target="#myModal"
+           class="play-btn position-absolute d-flex justify-content-center align-items-center">
+            <svg class="player light" width="290" height="180" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href="#player"></use>
+            </svg>
+        </a>
+    </section>
+
+    <section id="latest-blog" class="padding-large">
+        <div class="container">
+            <div class="row">
+                <div class="display-header">
+                    <h2 class="display-5 text-dark">Latest News</h2>
+                    <p>Browse the latest articles from out blogs.</p>
+                </div>
+                <div class="post-grid d-flex flex-wrap mt-4">
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+                        <div class="card-item">
+                            <div class="card-body p-0 d-flex">
+                                <div class="meta-date me-3">
+                                    <span class="meta-day">15</span>
+                                    <span class="meta-month text-uppercase">Jan</span>
+                                </div>
+                                <div class="card-detail">
+                                    <h3 class="card-title fs-4 text-capitalize fw-semibold">
+                                        <a href="blog.html">Easily book the best hotel room in this season</a>
+                                    </h3>
+                                    <p class="blog-paragraph">Enim ut nunc, ultrices mauris felis viverra amet. Ante sed
+                                        dictum nisi
+                                        suscipit ac ut faucibus
+                                        pretium interdum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+                        <div class="card-item">
+                            <div class="card-body p-0 d-flex">
+                                <div class="meta-date me-3">
+                                    <span class="meta-day">25</span>
+                                    <span class="meta-month">Jan</span>
+                                </div>
+                                <div class="card-detail">
+                                    <h3 class="card-title fs-4 text-capitalize fw-semibold">
+                                        <a href="blog.html">Benefits of visiting spa and massage at hotel</a>
+                                    </h3>
+                                    <p class="blog-paragraph">Enim ut nunc, ultrices mauris felis viverra amet. Ante sed
+                                        dictum nisi
+                                        suscipit ac ut faucibus
+                                        pretium interdum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+                        <div class="card-item">
+                            <div class="card-body p-0 d-flex">
+                                <div class="meta-date me-3">
+                                    <span class="meta-day">27</span>
+                                    <span class="meta-month">Jan</span>
+                                </div>
+                                <div class="card-detail">
+                                    <h3 class="card-title fs-4 text-capitalize fw-semibold">
+                                        <a href="blog.html">Top 10 hotel safety tips that you should follow</a>
+                                    </h3>
+                                    <p class="blog-paragraph">Enim ut nunc, ultrices mauris felis viverra amet. Ante sed
+                                        dictum nisi
+                                        suscipit ac ut faucibus
+                                        pretium interdum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="overflow-hidden">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 bg-gray-100 d-flex justify-content-center align-items-center g-0">
+                <div class="contact-detail">
+                    <h2>Get In Touch</h2>
+                    <form action="" class="contact-form my-5">
+                        <input type="text" name="username" placeholder="Write your full name"
+                               class="text-dark w-100 border-0 bg-transparent fs-4 mb-4">
+                        
+                        <input type="text" name="phone" placeholder="Write your phone number"
+                               class="text-dark w-100 border-0 bg-transparent fs-4 mb-4">
+                        
+                        <input type="text" name="username" placeholder="Write your email"
+                               class="text-dark w-100 border-0 bg-transparent fs-4 mb-4">
+                        
+                        <input type="text" name="email address" placeholder="Write your email address"
+                               class="text-dark w-100 border-0 bg-transparent fs-4 mb-4">
+                        
+                        <textarea name="text" placeholder="Write your message"
+                                  class="text-dark w-100 border-0 bg-transparent fs-4 mb-4"></textarea>
+                    </form>
+
+                    <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative">
+                        <span>Gửi tin nhắn
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8" enable-background="new 0 0 36.1 25.8" xml:space="preserve">
+                                <g>
+                                    <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34" y2="12.9"></line>
+                                    <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
+                                </g>
+                          </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 g-0 h-100 d-none d-lg-flex">
+                <div class="image-holder">
+                    <img src="{% static 'webapp/images/single-image2.jpg' %}" alt="single image" class="img-fluid full-height">
+                </div>
+            </div>
+        </div>
+    </section>
+
+{#    <section id="newsletter" class="padding-large">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-8 mx-auto text-center">#}
+{#                    <h2>Join our newsletter</h2>#}
+{#                    <p>Sign up to our newsletter to receive our latest news about offers & promotions.</p>#}
+{#                    <form id="form" class="d-flex flex-wrap position-relative mt-5">#}
+{#                        <input type="text" name="email" placeholder="Enter your email address"#}
+{#                               class="border-radius-35 text-light ps-5 outline-transparent fs-3"/>#}
+{#                        <div class="btn-subscribe position-absolute">#}
+{#                            <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative">#}
+{#                                <span>Subscribe#}
+{#                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8" enable-background="new 0 0 36.1 25.8" xml:space="preserve">#}
+{#                                        <g>#}
+{#                                            <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="0" y1="12.9" x2="34" y2="12.9"></line>#}
+{#                                            <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>#}
+{#                                        </g>#}
+{#                                  </svg>#}
+{#                                </span>#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{% endblock %}
+
+{% block jsblock %}
+    <script type="text/javascript" src="{% static 'webapp/js/script.js' %}"></script>
+{% endblock %}

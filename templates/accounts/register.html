@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'webapp/css/login_register.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section id="login-register">
+        <div class="image-holder position-relative">
+            <img src="{% static 'webapp/images/banner-item1.jpg' %}" alt="banner" class="img-fluid">
+        </div>
+        <div class="container-lg">
+            <div class="banner-content">
+                <div id='login-form' class='login-page'>
+                    <div class="form-box">
+                        <div class='button-box'>
+                            <div id='btn'></div>
+                            <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
+                            <button type='button' onclick='register()' class='toggle-btn'>Register</button>
+                        </div>
+                        <form id='login' class='input-group-login'>
+                            <input type='email' name="email" class='input-field' placeholder='Email' required>
+                            <input type='password' name="password" class='input-field' placeholder='Enter Password' required>
+                            <input type='checkbox' class='check-box'><span>Remember Password</span>
+                            <button type='submit' class='submit-btn login-submit-btn'>Log in</button>
+                        </form>
+                        <form id='register' class='input-group-register'>
+                            <input type='text' class='input-field' name="first_name" placeholder='First Name' required>
+                            <input type='text' class='input-field' name="last_name" placeholder='Last Name ' required>
+                            <input type='email' class='input-field' name="email" placeholder='Email' required>
+                            <input type='password' class='input-field' name="password" placeholder='Enter Password' required>
+                            <input type='password' class='input-field' name="confirm_password" placeholder='Confirm Password' required>
+                            <input type='checkbox' class='check-box terms-conditions'><span>I agree to the terms and conditions</span>
+                            <button type='submit' class='register-submit-btn submit-btn'>Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="social-links position-absolute">
+                <ul class="list-unstyled d-flex d-md-block justify-content-center">
+                    <li class="pb-3 pe-3"><a href="#" class="light">Fb</a></li>
+                    <li class="pb-3 pe-3"><a href="#" class="light">Ig</a></li>
+                    <li class="pb-3 pe-3"><a href="#" class="light">Tw</a></li>
+                    <li class="pb-3 pe-3"><a href="#" class="light">Li</a></li>
+                    <li><a href="#" class="light">Yt</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block jsblock %}
+    <script>
+        $(document).ready(function () {
+            var x = $('#login');
+            var y = $('#register');
+            var z = $('#btn');
+
+            window.register = function () {
+                x.css('left', '-400px');
+                y.css('left', '50px');
+                z.css('left', '110px');
+                $('.form-box').css('height', '550px'); 
+            }
+
+            window.login = function () {
+                x.css('left', '50px');
+                y.css('left', '450px');
+                z.css('left', '0px');
+                $('.form-box').css('height', '480px'); 
+            }
+        });
+    </script>
+    <script>
+    $(document).ready(function (){
+        $('.login-submit-btn').on('click', function (e){
+            e.preventDefault();
+            let email = $("#login input[name='email']").val();
+            let password = $("#login input[name='password']").val();
+            $.ajax({
+                url: "{% url 'login' %}",
+                type: "POST",
+                contentType: "application/json",
+                data:JSON.stringify({
+                    "email": email,
+                    "password": password
+                }),
+                dataType: 'json',
+                success: function(response, status, xhr){
+                    localStorage.setItem("ACCESS_TOKEN", response.access_token);
+                    window.history.pushState(null, null, window.location.href);
+                    window.onpopstate = function () {
+                        window.history.go(1);
+                    };
+                    if(localStorage.getItem("PRE_URL"))
+                        window.location.href = localStorage.getItem("PRE_URL");
+                    else window.location.href = "http://localhost:8000"
+                },
+                error: function (xhr, status, error) {
+                    response = JSON.parse(xhr.responseText);
+                    if (response.errors.non_field_errors) {
+                        for (let i = 0; i < response.errors.non_field_errors.length; i++) {
+                            createToast("error", response.errors.non_field_errors[i]);
+                        }
+                    }
+                }
+            })
+        })
+        $('.register-submit-btn').on('click', function (e) {
+            e.preventDefault();
+            if ($('.terms-conditions').is(':checked')) {
+                var registerForm = new FormData($('#register')[0])
+                $.ajax({
+                    url: '{% url "register" %}',
+                    type: 'POST',
+                    data: registerForm,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success: function (response) {
+                        createToast("success", "Your account has been successfully created");
+                        setInterval(function (){
+                            createToast("success", "We have sent an activation link to your email. Please activate your account!");
+                        }, 500);
+                    },
+                    error: function (xhr, status, err) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.email) {
+                            for (let i = 0; i < response.email.length; i++) {
+                                createToast("error", response.email[i]);
+                            }
+                        }
+                        if (response.password) {
+                            for (let i = 0; i < response.password.length; i++) {
+                                createToast("error", response.password[i]);
+                            }
+                        }
+                    }
+                })
+            } else {
+                createToast("warning", "You must agree to the terms and conditions");
+            }
+        });
+        
+    })
+    </script>
+{% endblock %}
